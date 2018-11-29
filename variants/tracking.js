@@ -3,11 +3,12 @@ export const script = `<script async src="https://www.googletagmanager.com/gtag/
 export const trackingCode = `window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'UA-129845377-1');`
 
 export const experimentCode = `<!-- Google Analytics Content Experiment code -->
 <script>function utmx_section(){}function utmx(){}(function(){var
-k='185405472-1',d=document,l=d.location,c=d.cookie;
+k='185405472-3',d=document,l=d.location,c=d.cookie;
 if(l.search.indexOf('utm_expid='+k)>0)return;
 function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
 indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
