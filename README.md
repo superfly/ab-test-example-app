@@ -2,7 +2,7 @@
 
 The Edge is a *great* place to solve certain categories of problems. For example: A/B testing - comparing multiple versions of a web page to see which one performs better.
 
-A/B testing allows you to make the most out of your existing traffic. It's backed by **real** data from **real** users. This means it gives you crystal clear solutions for growing your business through app optimizations. You can test metrics such as session duration, bounce rate, conversions (and more), on features such as opt-in forms, pricing schemes, calls to action (and more). Almost *anything* that affects visitor behavior can be A/B tested. 
+A/B testing allows you to make the most out of your existing traffic. It's backed by **real** data from **real** users. This means you get crystal clear solutions for growing your business through app optimizations. You can test metrics such as session duration, bounce rate, conversions (and more), on features such as opt-in forms, pricing schemes, calls to action (and more). Almost *anything* that affects visitor behavior can be A/B tested. 
 
 **WARNING**: Proper A/B testing can lead to: better resonance with your audience, boosted conversion rates and increased ROI.
 
