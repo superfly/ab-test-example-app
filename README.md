@@ -22,7 +22,7 @@ Speed matters. A LOT. Obviously for your business as a whole, but especially in 
 
 ## How it works
 
-This app is simple for you to set up for your own experimental purposes. And although it's easy-to-use and understand, it's accomplishing *a lot* for you. Heres what its doing:
+This app is simple for you to set up for your own experimental purposes. And although it's easy-to-use and understand, it's accomplishing *a lot* for you. Here's what its doing:
 
 * Using Fly's proxy library to generate a fetch-like function that makes a request to an origin (your app)
 * Sets your origin as the "original" version and then creates variants based on new code you provide in `/variants`
@@ -33,7 +33,7 @@ This app is simple for you to set up for your own experimental purposes. And alt
 * Google takes care of user segmentation + conversion tracking
 * Watch your experiment results and when concluded, Google picks a winner for you
 * Implement the winning variant and......
-* Grow your business *knowing* you've done eveything right
+* Grow your business *knowing* you've done everything right
 
 ## Set it up yourself
 
@@ -44,7 +44,7 @@ This app is simple for you to set up for your own experimental purposes. And alt
 5. Change `const backend` ([index.js#L14](https://github.com/superfly/ab-test-example-app/blob/master/index.js#L14)) to match your own app's domain
 6. Feel free to add more variants (this app has 2 variants on top of the original)
 7. Modify code in [`/variants/`](https://github.com/superfly/ab-test-example-app/tree/master/variants) to whatever app changes you want to test (this app tests 3 different sign up forms)
-8. You'll also need to modify the `createVariant` function ([index.js#L123](https://github.com/superfly/ab-test-example-app/blob/master/index.js#L123)) to conicide with your own app's placement of DOM elements
+8. You'll also need to modify the `createVariant` function ([index.js#L123](https://github.com/superfly/ab-test-example-app/blob/master/index.js#L123)) to coincide with your own app's placement of DOM elements
 9. When you're happy with your variants, it's time to deploy!
 10. [Create a Fly account](https://fly.io/app/sign-up) if you don't already have one, and from the command line run:
 	* `fly login`
@@ -52,15 +52,15 @@ This app is simple for you to set up for your own experimental purposes. And alt
 	* `fly deploy`
 11. Then visit www.name-of-app.edgeapp.net to see it instantly!
 	* `fly hostnames add <your-custom-hostname.com>` to add a custom domain name to your new Fly Edge app (and don't forget to visit your DNS provider (Cloudflare, DigitalOcean, WordPress, etc...) to make a record that we can use for your domain/hostname)
-12. Sign into [Google Analytics](https://analytics.google.com/analytics/web/) (or create an account) and select Behavior > Experiments > Create Experiment ([click here for detailed instructions](https://support.google.com/analytics/answer/1745216?hl=en&ref_topic=1745208))
+12. Sign into [Google Analytics](https://analytics.google.com/analytics/web/) (or create an account) and select **Behavior** > **Experiments** > **Create Experiment** ([click here for detailed instructions](https://support.google.com/analytics/answer/1745216?hl=en&ref_topic=1745208))
 13. Select an objective (this example uses "Bounce Rate") and then specify which URL's to use for original + variants (this will be www.yourapp.com + www.yourapp.com/variation-one, www.yourapp.com/variation-two, etc...)
-14. Add provided tracking codes to the <HEAD> of your app pages. This can be done by simply changing what's in [`/variants/tracking.js`](https://github.com/superfly/ab-test-example-app/blob/master/variants/tracking.js) to match your own codes
+14. Add provided tracking codes to the `<HEAD>` of your app pages. This can be done by simply changing what's in [`/variants/tracking.js`](https://github.com/superfly/ab-test-example-app/blob/master/variants/tracking.js) to match your own codes
 15. `fly deploy` again, and click "Start Experiment"
 16. Hurray! Your A/B test is now live!
 
 ## What else can you do?
 
-Since Google only allows you to test one domain name per experiment, this Edge app would be ecspecially useful for A/B testing multiple backends. You can do this by "mounting" different backends onto different paths and then serving them all under [one hostname](https://fly.io/articles/one-hostname-to-rule-them-all-updated-version/). For example:
+Since Google only allows you to test one domain name per experiment, this Edge app would be especially useful for A/B testing multiple backends. You can do this by "mounting" different backends onto different paths and then serving them all under [one hostname](https://fly.io/articles/one-hostname-to-rule-them-all-updated-version/). For example:
 
 ```javascript
 const mounts = {
@@ -69,11 +69,3 @@ const mounts = {
 	'/': backends.generic("http://www.unicorns.com/", {'host': "www.unicorns.com"})
 }
 ```
-
-
-
-
-
-
-
-
