@@ -3,12 +3,12 @@ import backends from './lib/backends'
 import {orig, p, formOriginal, styleOriginal, divStyle} from './variants/original'
 import {one, formOne, styleOne, divStyle1} from './variants/one'
 import {two, formTwo, styleTwo, divStyle2} from './variants/two'
-import {script, trackingCode, experimentCode} from './variants/tracking'
+import {script, trackingCode, experimentCode, conversionTracking} from './variants/tracking'
 
 fly.http.respondWith( routeMounts )
 
 // cache key
-let key = 'a/b-variant: '
+let key = 'A/B-test-variant: '
 
 // proxy fetch request to your app
 const backend = backends.generic("http://www.example.com/", {'host': "www.example.com"})
@@ -41,8 +41,12 @@ async function routeMounts(req) {
           req.headers.delete("accept-encoding")
           let response = await backend(req, basePath)
           let orig = await original(response)
-          await responseCache.set(cacheKey, orig)
-          return orig
+
+          // adds the conversion tracking script to <HEAD> AFTER the variant has been created
+          let originalWithTracking = await addConversionTracking(orig)
+
+          await responseCache.set(cacheKey, originalWithTracking)
+          return originalWithTracking
       }
     }
 
@@ -60,8 +64,12 @@ async function routeMounts(req) {
           req.headers.delete("accept-encoding")
       		let response = await backend(req, basePath)
         	let variant = await createVariant(response, one, formOne, styleOne, divStyle1)
-          await responseCache.set(cacheKey, variant)
-        	return variant
+
+          // adds the conversion tracking script to <HEAD> AFTER the variant has been created
+          let variantWithTracking = await addConversionTracking(variant)
+
+          await responseCache.set(cacheKey, variantWithTracking)
+        	return variantWithTracking
     	}
 
     	if (path === "/variation-two") {
@@ -76,8 +84,12 @@ async function routeMounts(req) {
           req.headers.delete("accept-encoding")
       		let response = await backend(req, basePath)
         	let variant = await createVariant(response, two, formTwo, styleTwo, divStyle2)
-          await responseCache.set(cacheKey, variant)
-        	return variant
+
+          // adds the conversion tracking script to <HEAD> AFTER the variant has been created
+          let variantWithTracking = await addConversionTracking(variant)
+
+          await responseCache.set(cacheKey, variantWithTracking)
+          return variantWithTracking
     	}
     }
   }
@@ -150,4 +162,20 @@ async function createVariant(resp, variantHeader, variantForm, variantStyle, var
 
   resp.headers.delete("content-length")
   return resp
+}
+
+// adds the conversion tracking script AFTER the variant has been created (sends the event to Google Analytics)
+// everytime a user hits "submit" on the sign-up form, an event is recorded in GA to let you know
+async function addConversionTracking(response) {
+  let body = await response.text()
+  response = new Response(body, response)
+  response.document = Document.parse(body)
+
+  let head = response.document.querySelector("head")
+  head.appendChild(`<script>${conversionTracking}</script>`)
+
+  body = response.document.documentElement.outerHTML
+  response = new Response(body, response)
+  response.headers.delete("content-length")
+  return response
 }

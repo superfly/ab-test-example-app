@@ -1,14 +1,13 @@
 export const two = "<h1>Variant Two</h1>"
 
-export const formTwo = `<form class="sign-up">
+export const formTwo = `<form class="sign-up" id="signup-form">
     <h1 class="sign-up-title">Sign up in seconds</h1>
-    <input type="text" class="sign-up-input" placeholder="What's your username?" autofocus>
+    <input id="Email" type="text" class="sign-up-input" placeholder="What's your email?" autofocus>
     <input type="password" class="sign-up-input" placeholder="Choose a password">
     <input type="submit" value="Sign me up!" class="sign-up-button">
   </form>`
 
 export const styleTwo = `
-
 body {
   font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #404040;
@@ -156,6 +155,3 @@ input {
 }`
 
 export const divStyle2 = `width: 100%`
-
-
-

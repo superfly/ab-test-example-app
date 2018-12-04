@@ -1,11 +1,11 @@
 export const one = "<h1>Variant One</h1>"
 
-export const formOne = `<div id="login-box">
+export const formOne = `<form id="signup-form" action="#" method="post">
   <div class="left">
     <h1>Sign up</h1>
     
     <input type="text" name="username" placeholder="Username" />
-    <input type="text" name="email" placeholder="E-mail" />
+    <input type="text" id="Email" name="email" placeholder="E-mail" />
     <input type="password" name="password" placeholder="Password" />
     <input type="password" name="password2" placeholder="Retype password" />
     
@@ -20,10 +20,9 @@ export const formOne = `<div id="login-box">
     <button class="social-signin google">Log in with Google+</button>
   </div>
   <div class="or">OR</div>
-</div>`
+</form>`
 
 export const styleOne = `
-
 body {
   margin: 0;
   padding: 0;
@@ -34,7 +33,8 @@ body {
   font-weight: 300;
 }
 
-#login-box {
+#signup-form {
+  padding: 50px;
   position: relative;
   margin: 5% auto;
   width: 600px;
@@ -183,6 +183,3 @@ button.social-signin.google {
 }`
 
 export const divStyle1 = `width: 100%`
-
-
-

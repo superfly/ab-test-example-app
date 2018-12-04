@@ -2,7 +2,7 @@ export const orig = `<h1>Original</h1>`
 
 export const p = `<h3><a href="https://ab-test.edgeapp.net/variation-one">Variant One</a> , <a href="https://ab-test.edgeapp.net/variation-two">Variant Two</a></h3>`
 
-export const formOriginal = `<form action="#" method="post">
+export const formOriginal = `<form action="#" method="post" id="signup-form">
   <h2>Sign Up</h2>
     <p>
       <label for="Email" class="floatLabel">Email</label>
@@ -17,12 +17,11 @@ export const formOriginal = `<form action="#" method="post">
       <input id="confirm_password" name="confirm_password" type="password">
     </p>
     <p>
-      <input type="submit" value="Create My Account" id="submit">
+      <input type="submit" value="Create My Account">
     </p>
   </form>`
 
 export const styleOriginal = `
-
 body {
   background: #384047;
   font-family: sans-serif;
@@ -111,6 +110,3 @@ form label.floatLabel {
 }`
 
 export const divStyle = `width: 100%`
-
-
-

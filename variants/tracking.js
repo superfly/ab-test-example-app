@@ -20,3 +20,48 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
 </script><script>utmx('url','A/B');</script>
 <!-- End of Google Analytics Content Experiment code -->`
+
+export const conversionTracking =
+`
+// conversion tracking >> conversions will show up under "Behavior > Events" in your GA dashboard
+document.addEventListener("DOMContentLoaded", function(event) {
+  // Gets a reference to the form element, assuming
+  // it contains the id attribute "signup-form".
+  var form = document.getElementById('signup-form');
+  console.log("Submits on this signup-form are tracked in Google Analytics under 'Events'", form);
+
+  // Adds a listener for the "submit" event.
+  form.addEventListener('submit', function(event) {
+    let email = document.getElementById("Email").value;
+    var x = location.pathname;
+
+    // Prevents the browser from submitting the form
+    // and thus unloading the current page.
+    event.preventDefault();
+
+    console.log("form submitted")
+
+    // Creates a timeout to call 'submitForm' after one second.
+    setTimeout(submitForm, 1000);
+
+    // Keeps track of whether or not the form has been submitted.
+    // This prevents the form from being submitted twice in cases
+    // where 'hitCallback' fires normally.
+    var formSubmitted = false;
+
+    function submitForm() {
+      if (!formSubmitted) {
+        formSubmitted = true;
+        form.submit();
+      }
+    }
+
+    // Sends the event to Google Analytics and
+    // resubmits the form once the hit is done.
+    gtag('event', 'Sign Up form submission', {
+      'event_category': 'Sign Ups',
+      'event_label': email + ' signed up on: ' + x
+    });
+  });
+});
+`
