@@ -35,7 +35,7 @@ This app is simple for you to set up for your own experimental purposes. And alt
 * Implement the winning variant and......
 * Grow your business *knowing* you've done everything right
 
-This app also sends all conversions through to Google Analytics as "events" to let you know exactly **who signed up** and on **what page** they signed up on. This works by first getting a reference to the form element, adding a listener for the "submit" event, and then sending the event to Google using the global site tag (gtag.js). This code can be viewed in [tracking.js](https://github.com/superfly/ab-test-example-app/blob/master/variants/tracking.js#L59-L64).
+This app also sends all conversions through to Google Analytics as "events" to let you know exactly **who signed up** and on **what page** they signed up on. This works by first getting a reference to the form element, adding a listener for the "submit" event, and then sending the event to Google using the global site tag (gtag.js). Conversions will show up under "Behavior > Events" in your GA dashboard. This code can be viewed in [tracking.js](https://github.com/superfly/ab-test-example-app/blob/master/variants/tracking.js#L59-L64).
 
 ## Set it up yourself
 
